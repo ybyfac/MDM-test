@@ -1,0 +1,9 @@
+version: "2"
+services:
+  test-mdm:
+    container_name: test-mdm
+    build:
+      context: ../
+      dockerfile: deployments/test-mdm/Dockerfile
+    ports:
+      - "5000:5000"

@@ -28,8 +28,7 @@ RUN touch /app/logs/app.log
 
 
 # EXPOSE the needed ports
-EXPOSE 8080
-EXPOSE 5000
+#EXPOSE 0.0.0.0:5000:5000
 
 #set ENV for STRINGS
 ENV STRINGS "ab,ab,abc,abc,abc,abc"

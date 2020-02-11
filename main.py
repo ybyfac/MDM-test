@@ -1,4 +1,5 @@
 import sys
+import json
 import logging
 from flask import Flask
 from flask_restplus import Api, Resource, fields
@@ -12,7 +13,7 @@ app = Api(app = flask_app,
           title = "SparceArrayCreator",
           description = "Gives you sparse representation of a given string for input query")
 
-name_space = app.namespace('MDM', description='create sparseArray')
+name_space = app.namespace('SparseArray', description='create sparseArray')
 
 model = app.model('Sentence',
                   {'strings': fields.String(required = True,
@@ -25,17 +26,21 @@ class MainClass(Resource):
              params={'query': 'Specify the query to look after in our defined string'})
     def get(self, query):
         try:
-            #sparsed_string = sparse_array.sparse_it(query=query)
+            sparsed_string = sparse_array.sparse_it(query=query)
+            sparsed_string_json = json.dumps(sparsed_string)
+
             return {
                 "status": "String formated in SparseArray",
-                "SparseArray": "LOL"
+                "SparseArray": sparsed_string_json
             }
         except Exception as e:
             name_space.abort(400, e.__doc__, status="the given query is empty", statusCode="400")
 
 
 if __name__ == '__main__':
-    flask_app.run(debug=True, host="127.0.0.1", port=5000)
+    sparse_array = SparseArray(STRINGS)
+    flask_app.run(debug=False, host="0.0.0.0")
+    #flask_app.run(debug=False, host="127.0.0.1", port=5000)
 
     #get the query with which we'll look for occurences in string
     query = str(sys.argv[1])
@@ -44,4 +49,3 @@ if __name__ == '__main__':
     logger.setLevel(logging.INFO)
     #TODO if length = 0 the raise an exception
 
-    sparse_array = SparseArray(STRINGS)
