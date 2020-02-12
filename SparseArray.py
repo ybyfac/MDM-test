@@ -3,45 +3,28 @@
     usually zeroes, (at this day) here in our case we defined these unwanted values by only retrieving string values with
     a given query.
 """
-import sys
+#relire le code et sa clareté
+#signature all done?
+#pylint score in readme
+#mock the function
+#add logs everywhere
+#sexy read me
+#make statement about sonarqube in readme
+#add execption
 
-#TODO remove thaht and put it in docker file as ENV
-
-
-#Complete the matchingStrings function below. DONE
-#python -m main ab,abc,bc
-
-#code it DONE
-    #relire le code et sa clareté
-    #signature
-    #pylint
-    #mock
-    #log?
-#dockerize it DONE
-#flask_swagger DOING
-
-#add logs
-#rename string as sentences of shit like that
-#read me 50%
-#requierement -> generate it with pip freeze
-#mock test
-#pylint
-#make statement about sonarqube
-#execption
-#ecrire les signature en entier
-#todo faire une classe et faire le main
-# decrire le consctructeur
-# decrire la methode
 from typing import Dict
 from utils import matchingStrings
-
 
 class SparseArray:
     """ class is defined like an array of words as below:
     - sentence a.k.a strings, list of words
     """
     def __init__(self,sentence : str):
-        self.sentence = sentence.split(",")
+        # this could be __private attributes and add getter and setter to the class
+        # also SparseArray could implements an interface contract
+        # this way we could have multiple implementation of SparseArray
+        # for this test we keep it simple
+        self.sentence = sentence
         self.length_sentence = len(sentence)
 
     def sparse_it(self, query : str) -> Dict[str, int]:
@@ -49,9 +32,9 @@ class SparseArray:
         This method compute frequency in our sentence,
         output we got a dict with our words as key and their frequency as value
         Args:
-        - query (str) : list of word to count occurences in our other list of word(a.k.a sentence)
+        - query (str) : our query contains filters,
+        list of word to count occurences in our other list of word (a.k.a sentence)
         """
-        queries = query.split(",")
-        return matchingStrings(self.sentence,queries)
+        return matchingStrings(self.sentence,query)
 
 

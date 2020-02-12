@@ -5,5 +5,7 @@ services:
     build:
       context: ../
       dockerfile: deployments/test-mdm/Dockerfile
+    env_file:
+      - test-mdm.env
     ports:
       - "5000:5000"

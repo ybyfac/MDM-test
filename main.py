@@ -38,14 +38,13 @@ class MainClass(Resource):
 
 
 if __name__ == '__main__':
+    #get the query with which we'll look for occurences in string
+    #query = str(sys.argv[1])
+
     sparse_array = SparseArray(STRINGS)
+
     flask_app.run(debug=False, host="0.0.0.0")
     #flask_app.run(debug=False, host="127.0.0.1", port=5000)
 
-    #get the query with which we'll look for occurences in string
-    query = str(sys.argv[1])
-
-    logger = logging.getLogger()
-    logger.setLevel(logging.INFO)
     #TODO if length = 0 the raise an exception
 

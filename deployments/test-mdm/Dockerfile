@@ -10,10 +10,7 @@ WORKDIR /app
 # copy the requirements.txt file to the work directory
 COPY requirements.txt .
 
-# Install some system deps in a virtual environment named .build-deps
-
 # install pip dependencies in the same layer
-
 RUN  pip install -r requirements.txt
 
 # copy rest of the source code
@@ -26,12 +23,11 @@ COPY utils.py /app
 RUN mkdir /app/logs
 RUN touch /app/logs/app.log
 
-
-# EXPOSE the needed ports
+# EXPOSE the needed ports (not used anymore w/ compose)
 #EXPOSE 0.0.0.0:5000:5000
 
 #set ENV for STRINGS
-ENV STRINGS "ab,ab,abc,abc,abc,abc"
+#ENV STRINGS "ab,ab,abc,abc,abc,abc" (not used anymore w/ compose)
 
 # Running Command or Entry Point
 ENTRYPOINT ["python", "main.py"]
