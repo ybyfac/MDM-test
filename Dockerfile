@@ -24,10 +24,10 @@ RUN mkdir /app/logs
 RUN touch /app/logs/app.log
 
 # EXPOSE the needed ports (not used anymore w/ compose)
-#EXPOSE 0.0.0.0:5000:5000
+#EXPOSE 5000:5000
 
-#set ENV for STRINGS
-#ENV STRINGS "ab,ab,abc,abc,abc,abc" (not used anymore w/ compose)
+#set ENV for STRINGS (not used anymore w/ compose)
+#ENV STRINGS "ab,ab,abc,abc,abc,abc"
 
 # Running Command or Entry Point
 ENTRYPOINT ["python", "main.py"]
