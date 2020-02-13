@@ -1,4 +1,4 @@
-""" entrypoint of this app"""
+""" entrypoint of this app, pylint gives Your code has been rated at 9.00/10 """
 import json
 from flask import Flask
 from flask_restplus import Api, Resource, fields
@@ -22,13 +22,14 @@ MODEL = APP.model('Sentence',
                                             )
                    })
 
-@NAME_SPACE.route("/create/<string:query>")
+@NAME_SPACE.route("/create/<string:query>", defaults={'query':123})
 class MainClass(Resource):
     """ class is made to handle Flask Swagger API exposition
     """
     @APP.doc(responses={200: 'OK', 400: 'Invalid Argument'},
              params={'query': 'Specify the query to look after in our defined string'},
              default='aba,ab')
+    @classmethod
     def get(self, query):
         """
            Method expose the api sparse_it method of sparse_array class and module
@@ -36,6 +37,8 @@ class MainClass(Resource):
                 - query (str): scenario name specified in settings file
         """
         try:
+            if query == None:
+                raise Exception("the given query is empty")
             sparsed_string = SPARSE_ARRAY.sparse_it(query=query)
             sparsed_string_json = json.dumps(sparsed_string)
 
@@ -45,7 +48,7 @@ class MainClass(Resource):
             }
         except Exception as exception:
             NAME_SPACE.abort(400, exception.__doc__,
-                             status="the given query is empty",
+                             status=repr(exception),
                              statusCode="400")
 
 

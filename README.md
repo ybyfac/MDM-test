@@ -43,7 +43,7 @@ There is a collection of input *strings* and a collection of *query* strings. Fo
 ## 
        
 ### Step 3  - Run a 'test-mdm' container
-#### Launch:
+#### Launch: (outdated since part 4)
       docker run -t test_mdm ab,abc,bc
 #### Result:
       {ab: 2, abc: 1, bc: 0}
@@ -90,4 +90,9 @@ and edit this environement value:
 #####  Scenario:
 The API gives this two possible output:
  - Code 200     OK    
- - Code 400     Bad Request / Invalid F
+ - Code 400     Bad Request / Invalid Format
+ 
+##### Improvement to do:
+
+- test with Mock
+- inspect with SonarQube

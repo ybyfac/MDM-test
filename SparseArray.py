@@ -3,14 +3,6 @@
     usually zeroes, (at this day) here in our case we defined these unwanted values by only retrieving string values with
     a given query.
 """
-#relire le code et sa clareté
-#signature all done?
-#pylint score in readme
-#mock the function
-#add logs everywhere
-#sexy read me
-#make statement about sonarqube in readme
-#add execption
 
 from typing import Dict
 from utils import matchingStrings
